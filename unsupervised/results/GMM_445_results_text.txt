@@ -1,0 +1,115 @@
+Test ID: 445
+
+----- Preprocessing Stats -----
+Image scale: 0.125
+Margins: 50 50
+Sharpen: True
+
+----- Training Stats -----
+Full data set size: 73863
+Training data set size: 1846
+Number of clusters: 16
+
+----- Evaluation Stats -----
+Silhouette Coefficient: -0.1372546706651214
+Number of samples used in Silhouette calculation: 1374
+Davies-Bouldin Index: 7.588603363206704
+Number of samples used in Davies-Bouldin calculation: 1457
+
+----- Cluster Stats -----
+Cluster 0
+num_cluster_members: 86
+num_healthy: 72
+num_effusion: 5
+num_infiltration: 9
+
+Cluster 1
+num_cluster_members: 183
+num_healthy: 142
+num_effusion: 14
+num_infiltration: 27
+
+Cluster 2
+num_cluster_members: 60574
+num_healthy: 49400
+num_effusion: 3171
+num_infiltration: 8003
+
+Cluster 3
+num_cluster_members: 4980
+num_healthy: 4161
+num_effusion: 274
+num_infiltration: 545
+
+Cluster 4
+num_cluster_members: 150
+num_healthy: 121
+num_effusion: 9
+num_infiltration: 20
+
+Cluster 5
+num_cluster_members: 4611
+num_healthy: 3718
+num_effusion: 298
+num_infiltration: 595
+
+Cluster 6
+num_cluster_members: 150
+num_healthy: 128
+num_effusion: 9
+num_infiltration: 13
+
+Cluster 7
+num_cluster_members: 115
+num_healthy: 97
+num_effusion: 3
+num_infiltration: 15
+
+Cluster 8
+num_cluster_members: 1877
+num_healthy: 1538
+num_effusion: 126
+num_infiltration: 213
+
+Cluster 9
+num_cluster_members: 104
+num_healthy: 78
+num_effusion: 8
+num_infiltration: 18
+
+Cluster 10
+num_cluster_members: 196
+num_healthy: 170
+num_effusion: 4
+num_infiltration: 22
+
+Cluster 11
+num_cluster_members: 5
+num_healthy: 5
+num_effusion: 0
+num_infiltration: 0
+
+Cluster 12
+num_cluster_members: 146
+num_healthy: 127
+num_effusion: 10
+num_infiltration: 9
+
+Cluster 13
+num_cluster_members: 155
+num_healthy: 129
+num_effusion: 5
+num_infiltration: 21
+
+Cluster 14
+num_cluster_members: 385
+num_healthy: 345
+num_effusion: 15
+num_infiltration: 25
+
+Cluster 15
+num_cluster_members: 146
+num_healthy: 130
+num_effusion: 4
+num_infiltration: 12
+

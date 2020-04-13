@@ -1,0 +1,4 @@
+No Finding :  60361
+Infiltration :  9547
+Effusion :  3955
+total:  73863

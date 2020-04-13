@@ -1,0 +1,115 @@
+Test ID: 341
+
+----- Preprocessing Stats -----
+Image scale: 0.125
+Margins: 50 50
+Sharpen: False
+
+----- Training Stats -----
+Full data set size: 73863
+Training data set size: 1846
+Number of clusters: 16
+
+----- Evaluation Stats -----
+Silhouette Coefficient: -0.0657013023269497
+Number of samples used in Silhouette calculation: 1437
+Davies-Bouldin Index: 17.129075319442464
+Number of samples used in Davies-Bouldin calculation: 1491
+
+----- Cluster Stats -----
+Cluster 0
+num_cluster_members: 5025
+num_healthy: 4130
+num_effusion: 238
+num_infiltration: 657
+
+Cluster 1
+num_cluster_members: 1784
+num_healthy: 1437
+num_effusion: 157
+num_infiltration: 190
+
+Cluster 2
+num_cluster_members: 3570
+num_healthy: 2832
+num_effusion: 261
+num_infiltration: 477
+
+Cluster 3
+num_cluster_members: 2593
+num_healthy: 2355
+num_effusion: 85
+num_infiltration: 153
+
+Cluster 4
+num_cluster_members: 4956
+num_healthy: 4117
+num_effusion: 245
+num_infiltration: 594
+
+Cluster 5
+num_cluster_members: 5420
+num_healthy: 4349
+num_effusion: 404
+num_infiltration: 667
+
+Cluster 6
+num_cluster_members: 7073
+num_healthy: 5597
+num_effusion: 391
+num_infiltration: 1085
+
+Cluster 7
+num_cluster_members: 12040
+num_healthy: 9574
+num_effusion: 776
+num_infiltration: 1690
+
+Cluster 8
+num_cluster_members: 3908
+num_healthy: 3171
+num_effusion: 178
+num_infiltration: 559
+
+Cluster 9
+num_cluster_members: 3909
+num_healthy: 2899
+num_effusion: 368
+num_infiltration: 642
+
+Cluster 10
+num_cluster_members: 1513
+num_healthy: 1364
+num_effusion: 57
+num_infiltration: 92
+
+Cluster 11
+num_cluster_members: 2899
+num_healthy: 2414
+num_effusion: 45
+num_infiltration: 440
+
+Cluster 12
+num_cluster_members: 4509
+num_healthy: 3779
+num_effusion: 134
+num_infiltration: 596
+
+Cluster 13
+num_cluster_members: 2887
+num_healthy: 2348
+num_effusion: 155
+num_infiltration: 384
+
+Cluster 14
+num_cluster_members: 3138
+num_healthy: 2765
+num_effusion: 125
+num_infiltration: 248
+
+Cluster 15
+num_cluster_members: 8639
+num_healthy: 7230
+num_effusion: 336
+num_infiltration: 1073
+
