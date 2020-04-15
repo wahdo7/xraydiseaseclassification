@@ -12,7 +12,7 @@ from sklearn.cluster import MiniBatchKMeans
 from sklearn.metrics import silhouette_score, davies_bouldin_score
 from matplotlib import pyplot as plt
 
-def preprocessImage(img, scaleFactor, margin, sharpen):
+def preprocessImage(img, scaleFactor, margin, sharpen, blob):
 	processed_img = img
 
 	# if the image has more than one channel, condense them
@@ -27,6 +27,15 @@ def preprocessImage(img, scaleFactor, margin, sharpen):
 		alpha = 30
 		processed_img = blurred_img * (blurred_img - f_blurred_img)
 
+	if blob:
+		# plt.subplot(131)
+		# plt.imshow(processed_img)
+		processed_img = ndimage.gaussian_filter(processed_img, 1)
+		processed_img, num_objects = ndimage.label(processed_img > np.average(processed_img))
+		# plt.subplot(132)
+		# plt.imshow(processed_img)
+		# plt.show()
+
 	# cut off margins
 	processed_img = processed_img[margin[0] : processed_img.shape[0] - margin[0], margin[1] : processed_img.shape[1] - margin[1]]
 
@@ -39,13 +48,17 @@ def preprocessImage(img, scaleFactor, margin, sharpen):
 
 
 test_id = random.randint(100, 1000)
+print()
+print("Starting test id: ", test_id)
 
 train_proportion = 0.025
-eval_proportion = 0.01
+eval_proportion = 0.1
 scale = 0.125
 margin = (50, 50)
 num_clusters = 16
-sharpen = True
+sharpen = False
+blob = False
+even_sampling = False
 
 data = None
 with open('image_labels.csv', newline='') as csvfile:
@@ -58,13 +71,41 @@ with open('image_labels.csv', newline='') as csvfile:
 	print("Starting population sampling for training images.")
 	print(". . .")
 	train_number = math.floor(image_count * train_proportion)
-	train_indices = random.sample(range(1, image_count + 1), train_number)
 	train_files = []
 
-	for i, row in enumerate(reader):
-		if i in train_indices:
-			train_files.append(row[0])
-	print("Sampling complete. Training population size: ", train_number)
+	if even_sampling:
+		with open('image_labels_nofinding.csv', newline='') as nofinding_csvfile:
+			nofinding_reader = csv.reader(nofinding_csvfile)
+			nofinding_image_count = sum(1 for row in nofinding_reader) - 1
+			nofinding_csvfile.seek(0)
+			nofinding_train_indices = random.sample(range(1, nofinding_image_count + 2), math.floor(train_number / 3))
+			for i, row in enumerate(nofinding_reader):
+				if i in nofinding_train_indices:
+					train_files.append(row[0])
+			with open('image_labels_infiltration.csv', newline='') as infiltration_csvfile:
+				infiltration_reader = csv.reader(infiltration_csvfile)
+				infiltration_image_count = sum(1 for row in infiltration_reader) - 1
+				infiltration_csvfile.seek(0)
+				infiltration_train_indices = random.sample(range(1, infiltration_image_count + 2), math.floor(train_number / 3))
+				for i, row in enumerate(infiltration_reader):
+					if i in infiltration_train_indices:
+						train_files.append(row[0])
+				with open('image_labels_effusion.csv', newline='') as effusion_csvfile:
+					effusion_reader = csv.reader(effusion_csvfile)
+					effusion_image_count = sum(1 for row in effusion_reader) - 1
+					effusion_csvfile.seek(0)
+					effusion_train_indices = random.sample(range(1, effusion_image_count + 2), math.floor(train_number / 3))
+					for i, row in enumerate(effusion_reader):
+						if i in effusion_train_indices:
+							train_files.append(row[0])
+
+	else:
+		train_indices = random.sample(range(1, image_count + 2), train_number)
+		for i, row in enumerate(reader):
+			if i in train_indices:
+				train_files.append(row[0])
+
+	print("Sampling complete. Training population size: ", len(train_files))
 	print()
 
 
@@ -79,7 +120,7 @@ with open('image_labels.csv', newline='') as csvfile:
 		# plt.subplot(131)
 		# plt.imshow(img, cmap='gray')
 
-		img = preprocessImage(img, scale, margin, sharpen)
+		img = preprocessImage(img, scale, margin, sharpen, blob)
 
 		# plt.subplot(132)
 		# plt.imshow(img, cmap='gray')
@@ -96,7 +137,7 @@ with open('image_labels.csv', newline='') as csvfile:
 	print("Data processing and compilation complete. Data array shape: ", data.shape)
 	print()
 
-
+	prePCAdims = data.shape[1]
 	# Perform PCA to reduce dimensionality
 	print("Starting PCA.")
 	print(". . .")
@@ -104,6 +145,7 @@ with open('image_labels.csv', newline='') as csvfile:
 	data = pca.fit_transform(data)
 	print("PCA complete. New data array shape: ", data.shape)
 	print()
+	postPCAdims = data.shape[1]
 
 
 	# Create K-Means classifier based on training data
@@ -116,10 +158,8 @@ with open('image_labels.csv', newline='') as csvfile:
 
 
 	# Store data for evaluation
-	eval_silhouette_data = None
-	eval_silhouette_labels = []
-	eval_db_data = None
-	eval_db_labels = []
+	eval_data = None
+	eval_labels = []
 
 
 	# Run classifier on full data set
@@ -140,7 +180,7 @@ with open('image_labels.csv', newline='') as csvfile:
 			pred_img = imread("images/" + row[0])
 			actual_label = row[1]
 
-			pred_img = preprocessImage(pred_img, scale, margin, sharpen)
+			pred_img = preprocessImage(pred_img, scale, margin, sharpen, blob)
 
 			this_data = pred_img.flatten()
 			this_data = pred_img.reshape(1, -1)
@@ -148,29 +188,17 @@ with open('image_labels.csv', newline='') as csvfile:
 
 			prediction = kmeans.predict(this_data2)[0]
 
-			# Randomly store some data points for Silhouette evaluation
+			# Randomly store some data points for evaluation
 			if random.randint(0, int(round(1.0 / eval_proportion, 0))) <= 1:
-				if eval_silhouette_data is None:
-					eval_silhouette_data = np.empty((1, len(this_data[0])))
-					eval_silhouette_data[0] = this_data
+				if eval_data is None:
+					eval_data = np.empty((1, len(this_data2[0])))
+					eval_data[0] = this_data2
 				else:
-					new_eval_data = np.empty((len(eval_silhouette_data) + 1, len(this_data[0])))
-					new_eval_data[1:] = eval_silhouette_data
-					new_eval_data[0] = this_data
-					eval_silhouette_data = new_eval_data
-				eval_silhouette_labels.append(prediction)
-
-			# Randomly store some data points for Davies-Bouldin evaluation
-			if random.randint(0, int(round(1.0 / eval_proportion, 0))) <= 1:
-				if eval_db_data is None:
-					eval_db_data = np.empty((1, len(this_data[0])))
-					eval_db_data[0] = this_data
-				else:
-					new_eval_data = np.empty((len(eval_db_data) + 1, len(this_data[0])))
-					new_eval_data[1:] = eval_db_data
-					new_eval_data[0] = this_data
-					eval_db_data = new_eval_data
-				eval_db_labels.append(prediction)
+					new_eval_data = np.empty((len(eval_data) + 1, len(this_data2[0])))
+					new_eval_data[1:] = eval_data
+					new_eval_data[0] = this_data2
+					eval_data = new_eval_data
+				eval_labels.append(prediction)
 
 			thisdict = prediction_data[prediction]
 			thisdict["num_cluster_members"] += 1
@@ -186,34 +214,6 @@ with open('image_labels.csv', newline='') as csvfile:
 			sys.stdout.flush()
 	print("Running classifier on full data set complete.")
 	print()
-
-	# Output text results
-	text_output = open("results/K-Means_" + str(test_id) + "_results_text.txt", "w")
-	text_output.write("Test ID: " + str(test_id) + "\n")
-	text_output.write("\n")
-	text_output.write("----- Preprocessing Stats -----\n")
-	text_output.write("Image scale: " + str(scale) + "\n")
-	text_output.write("Margins: " + str(margin[0]) + " " + str(margin[1]) + "\n")
-	text_output.write("Sharpen: " + str(sharpen) + "\n")
-	text_output.write("\n")
-	text_output.write("----- Training Stats -----\n")
-	text_output.write("Full data set size: " + str(image_count) + "\n")
-	text_output.write("Training data set size: " + str(train_number) + "\n")
-	text_output.write("Number of clusters: " + str(kmeans.cluster_centers_.shape[0]) + "\n")
-	text_output.write("\n")
-	text_output.write("----- Evaluation Stats -----\n")
-	text_output.write("Silhouette Coefficient: " + str(silhouette_score(eval_silhouette_data, eval_silhouette_labels)) + "\n")
-	text_output.write("Number of samples used in Silhouette calculation: " + str(len(eval_silhouette_labels)) + "\n")
-	text_output.write("Davies-Bouldin Index: " + str(davies_bouldin_score(eval_db_data, eval_db_labels)) + "\n")
-	text_output.write("Number of samples used in Davies-Bouldin calculation: " + str(len(eval_db_labels)) + "\n")
-	text_output.write("\n")
-	text_output.write("----- Cluster Stats -----\n")
-	for m in range(len(prediction_data)):
-		text_output.write("Cluster " + str(m) + "\n")
-		for x in prediction_data[m]:
-			text_output.write(str(x) + ": " + str(prediction_data[m][x]) + "\n")
-		text_output.write("\n")
-
 
 	# Create a graph of the results
 	clusters_healthy = []
@@ -241,3 +241,35 @@ with open('image_labels.csv', newline='') as csvfile:
 	plt.legend((p1[0], p2[0], p3[0]), ('No Finding (Healthy)', 'Effusion', 'Infiltration'))
 
 	plt.savefig("results/K-Means_" + str(test_id) + "_results_graph.png")
+
+	# Output text results
+	text_output = open("results/K-Means_" + str(test_id) + "_results_text.txt", "w")
+	text_output.write("Test ID: " + str(test_id) + "\n")
+	text_output.write("\n")
+	text_output.write("----- Preprocessing Stats -----\n")
+	text_output.write("Image scale: " + str(scale) + "\n")
+	text_output.write("Margins: " + str(margin[0]) + " " + str(margin[1]) + "\n")
+	text_output.write("Sharpen: " + str(sharpen) + "\n")
+	text_output.write("Blob Extraction: " + str(blob) + "\n")
+	text_output.write("Number of features pre-PCA: " + str(prePCAdims) + "\n")
+	text_output.write("Number of features post-PCA: " + str(postPCAdims) + "\n")
+	text_output.write("\n")
+	text_output.write("----- Training Stats -----\n")
+	text_output.write("Full data set size: " + str(image_count) + "\n")
+	text_output.write("Training data set size: " + str(len(train_files)) + "\n")
+	text_output.write("Even sampling: " + str(even_sampling) + "\n")
+	text_output.write("Number of clusters: " + str(kmeans.cluster_centers_.shape[0]) + "\n")
+	text_output.write("\n")
+	text_output.write("----- Evaluation Stats -----\n")
+	text_output.write("Silhouette Coefficient: " + str(silhouette_score(eval_data, eval_labels)) + "\n")
+	text_output.write("Number of samples used in Silhouette calculation: " + str(len(eval_labels)) + "\n")
+	text_output.write("Davies-Bouldin Index: " + str(davies_bouldin_score(eval_data, eval_labels)) + "\n")
+	text_output.write("Number of samples used in Davies-Bouldin calculation: " + str(len(eval_labels)) + "\n")
+	text_output.write("\n")
+	text_output.write("----- Cluster Stats -----\n")
+	for m in range(len(prediction_data)):
+		text_output.write("Cluster " + str(m) + "\n")
+		for x in prediction_data[m]:
+			text_output.write(str(x) + ": " + str(prediction_data[m][x]) + "\n")
+		text_output.write("\n")
+

@@ -1,0 +1,17 @@
+Test ID: 566
+
+----- Preprocessing Stats -----
+Image scale: 0.125
+Margins: 50 50
+Sharpen: False
+Blob Extraction: False
+Number of features pre-PCA: 13225
+Number of features post-PCA: 525
+
+----- Training Stats -----
+Full data set size: 73863
+Training data set size: 1845
+Even sampling: True
+Number of clusters: 16
+
+----- Evaluation Stats -----
