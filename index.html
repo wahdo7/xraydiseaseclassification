@@ -79,30 +79,30 @@
 	  	</div>
 	  	<br>
 	  	<p>Sharpening the images did not produce the desired improvement for either algorithm.</p>
-	  	<h3>Variation #3: PCA with blob extraction</h3>
-	  	<p>For this variation, we tried an opposite approach to that of variation #2: instead of sharpening the image, we tried blurring the image using a Gaussian filter, then labeling the resulting "blobs" with different colors.</p>
+	  	<h3>Variation #3: PCA with Gaussian filtering and labeling</h3>
+	  	<p>For this variation, we tried an opposite approach to that of variation #2: instead of sharpening the image, we tried blurring the image using a Gaussian filter, then labeling each pixel as either "light" or "dark" to create a two-tone representation of each image.</p>
 	  	<div class="center" align="center">
 	  		<img src="./img/preprocess_blob.png">
-	  		<label>The native 1024x1024 image (left) and the reformatted, "blobbed" 115x115 image (right)</label>
+	  		<label>The native 1024x1024 image (left) and the reformatted, two-tone 115x115 image (right)</label>
 	  	</div>
 	  	<br>
-	  	<p>In addition to the blob extraction and PCA, the formatting, training, and evaluation techniques described previously were used in this variation. Image sharpening was not used.</p>
+	  	<p>In addition to the Gaussian filtering and PCA, the formatting, training, and evaluation techniques described previously were used in this variation. Image sharpening was not used.</p>
 	  	<div class="center" align="center">
 	  		<img src="./img/var3_kmeans.png">
-	  		<p>Silhouette Coefficient: -0.29141869070304653</p>
-	  		<p>Davies-Bouldin Index: 11.232429565567138</p>
+	  		<p>Silhouette Coefficient: -0.020005451318199686</p>
+	  		<p>Davies-Bouldin Index: 26.989964416324856</p>
 	  	</div>
 	  	<br>
 	  	<div class="center" align="center">
-	  		<img src="./img/var2_gmm.png">
-	  		<p>Silhouette Coefficient: -0.1372546706651214</p>
-	  		<p>Davies-Bouldin Index: 7.588603363206704</p>
+	  		<img src="./img/var3_gmm.png">
+	  		<p>Silhouette Coefficient: -0.09146024643428696</p>
+	  		<p>Davies-Bouldin Index: 12.810858631261144</p>
 	  	</div>
 	  	<br>
-	  	<p>Again, using blob extraction did not improve the results.</p>
+	  	<p>Again, using this method of preprocessing did not improve the results.</p>
 	  	<h3>Variation #4: Revised sampling</h3>
 	  	<p>As a last resort, we considered that perhaps our method of sampling may have been producing the undesirable results observed in the other variations. Only 2.5% of the total population is being used to train our classifiers, and since the dataset is made up mostly of "No Finding" images, we considered the possibility that the training data set was being dominated by those images and thus not adequetely encoding the perturbations shown in "Infiltration" and "Effusion" images. To try and rectify this, we changed our sampling method to include equal represention for all three labels in the training data.</p>
-	  	<p>In addition to the PCA, the formatting, training, and evaluation techniques described previously were used in this variation. Image sharpening and blob extraction were not used.</p>
+	  	<p>In addition to the PCA, the formatting, training, and evaluation techniques described previously were used in this variation. Image sharpening and the Gaussian filtering were not used.</p>
 	  	<div class="center" align="center">
 	  		<img src="./img/var4_kmeans.png">
 	  		<p>Silhouette Coefficient: -0.04532959360468642</p>
@@ -120,10 +120,11 @@
 	  	<p>In the end, we were unable to produce create clusters that sufficiently categorized our data. There are several possible reasons we thought of as to why this was the case:</p>
 	  	<ul>
 		  <li>More sophisticated preprocessing methods may have been necessary, including combining some of the methods we tried</li>
-		  <li>The parameters used in image sharpening, blob extraction, PCA, and the K-Means/GMM models may have needed further refinement</li>
+		  <li>The parameters used in image sharpening, Gaussian Filtering, image labeling, PCA, and the K-Means/GMM models may have needed further refinement</li>
 		  <li>Our use of sampling methods in order to work around the encountered memory limitations</li>
 		  <li>K-Means and GMM may just not be powerful enough to encode the patterns we were looking for</li>
 		</ul>
+		<p>Overall, even though the results are not what we wanted, the process behind implementing these unsupervised algorithms taught us a lot about the potential difficulties of machine learning in general. When the model doesn't produce the desired results, it can often be difficult to pinpoint exactly where the problem lies: whether it be in the dataset itself, how you processed that dataset, or in your choice of model and parameters. Even if training your model only takes a couple of lines long, there is so much computation that goes on goes on behind the scenes that you should carefully consider the size and contents of your data before attempting it. If we were to attempt these unsupervised algorithms again, we would invest more time in formatting and preprocessing the data to try and maximize the encoded information in as small a format as possible.</p>
 		<h2>Individual Responsibilities</h2>
 		<ul>
 		  <li>Overview and Data: Eithan Martinez</li>

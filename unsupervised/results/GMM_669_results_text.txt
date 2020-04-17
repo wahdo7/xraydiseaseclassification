@@ -1,7 +1,0 @@
-Test ID: 669
-
------ Preprocessing Stats -----
-Image scale: 0.125
-Margins: 50 50
-Sharpen: False
-Blob Extraction: True

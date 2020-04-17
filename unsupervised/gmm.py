@@ -15,6 +15,10 @@ from matplotlib import pyplot as plt
 def preprocessImage(img, scaleFactor, margin, sharpen, blob):
 	processed_img = img
 
+	# plt.figure(figsize=(12, 8))
+	# plt.subplot(131)
+	# plt.imshow(processed_img, cmap = 'gray')
+
 	# if the image has more than one channel, condense them
 	if len(processed_img.shape) == 3:
 		processed_img = np.zeros((img.shape[0], img.shape[1]))
@@ -28,22 +32,22 @@ def preprocessImage(img, scaleFactor, margin, sharpen, blob):
 		processed_img = blurred_img * (blurred_img - f_blurred_img)
 
 	if blob:
-		# plt.subplot(131)
-		# plt.imshow(processed_img)
-		processed_img = ndimage.gaussian_filter(processed_img, 1)
-		processed_img, num_objects = ndimage.label(processed_img > np.average(processed_img))
-		# plt.subplot(132)
-		# plt.imshow(processed_img)
-		# plt.show()
+		processed_img = ndimage.gaussian_filter(processed_img, 2)
+		processed_img = processed_img > np.average(processed_img)
+		#processed_img, num_objects = ndimage.label(processed_img)
 
 	# cut off margins
 	processed_img = processed_img[margin[0] : processed_img.shape[0] - margin[0], margin[1] : processed_img.shape[1] - margin[1]]
 
 	# resize the image
-	processed_img = transform.resize(processed_img, (math.floor(processed_img.shape[0] * scaleFactor), math.floor(processed_img.shape[1] * scaleFactor)))
+	processed_img = transform.resize(processed_img, (math.floor(processed_img.shape[0] * scaleFactor), math.floor(processed_img.shape[1] * scaleFactor)), anti_aliasing=False)
 
 	#processed_img = transform.rescale(processed_img, scale=scaleFactor)
 
+	# plt.subplot(132)
+	# plt.imshow(processed_img, cmap = 'gray')
+	# plt.show()
+	
 	return processed_img
 
 
