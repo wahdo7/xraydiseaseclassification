@@ -1,0 +1,2 @@
+model_checkpoint_path: "DenseNet_2.tf"
+all_model_checkpoint_paths: "DenseNet_2.tf"
