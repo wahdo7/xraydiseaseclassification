@@ -1,1 +1,5 @@
-# xraydiseaseclassification
+# X-Ray Disease Classification
+## Overview
+For our Spring 2020 ML project, our objective was to classify x-ray images of human chests into three categories: healthy, infiltration, and effusion. Infiltration refers to a buildup such as pus, protein, or blood in the parenchyma of the lung, while effusion refers to accumulation of fluid within the layers of the pleura in the lung.
+## Data
+The data used was provided by the clinical PACS database at National Institutes of Health Clinical Center. The data set contained 112,210 images of 30,805 different patients, and there were 14 possible finding labels for each disease, and some entries had more than one label. For the purpose of this project, we only used images that were labeled effusion only, infiltration only, or had no disease finding, since these were the three most common label types. Some images were taken from the anterior-posterior view (AP), while others were posterior-anterior (PA). PA views are more common in the data set, and are generally accepted to be better for the purpose of identifying abnormalities.
