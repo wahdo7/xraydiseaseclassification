@@ -9,7 +9,7 @@
 	  		<img src="./img/infiltration.png" align="right">
 	  	</div>
 	  	<br><br><br><br><br><br><br><br><br><br><br><br><br>
-		<p> Additionally, some images were taken from a posterior-anterior view (PA), while others were taken anterior-posterior (AP). PA images formed the majority of the dataset and are generally considered to be better for the purpose of disease identification, so some implementations restricted images to PA only.
+		<p> The dataset contained both images taken from a posterior-anterior view (PA), in which the film plate is placed in front of the patient's chest, and images taken from an anterior-posterior view (AP), in which the film plate is placed behind the patient's back. PA images formed the majority of the dataset and are generally considered to be better for the purpose of disease identification, so some implementations restricted images to PA views only.
 	  	<h2>Unsupervised Learning</h2>
 	  	<h3>Motivation</h3>
 	  	<p>Since we were working with an image dataset, we hypothesized that we would need a fairly sophisticated model to correctly classify our images. However, we also felt inclined to try our some unsupervised methods to see if there was any way we could achieve results using unlabeled data, and to see how those results compared to other methods. Even though the afflictions we chose to focus on are well documented, it may not always be the case that a large labeled dataset will be available to train from, so we want to see if unsupervised learning can capture any general abnormalities in the x-ray images.</p>
