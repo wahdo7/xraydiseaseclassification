@@ -1,20 +1,22 @@
-<h1>CS-4641: X-ray Disease Classification</h1>
+<h1>CS-4641: X-Ray Disease Classification</h1>
   		<h2>Overview</h2>
   		<p>For our Spring 2020 ML project, our mission was to use X-Ray images of the human chest and determine one of three outcomes. That is, if the patient is healthy, has signs of Infiltration or has signs of effusion. Infiltration refers to a buildup such as pus, protein, or blood in the parenchyma of the lung, while effusion refers to accumulation of fluid within the layers of the pleura in the lung.</p>
-  		<h2>Data</h2>
-  		<p>We will use this data provided by the clinical PACS database at National Institutes of Health Clinical Center. The data provides 112,120 frontal view X-ray images of 30,805 patients. Although there are 14 different types of diseases included in the dataset, we are focusing only on Infiltration and effusion, since those are the most prevalent. Limiting the database, affords us the opportunities to attempt to approach and obtain more comprehensive results. Below, you can find images depicting each example. </p>
+		
+ <h2>Data</h2>
+ <p>We used data provided by the clinical PACS database at National Institutes of Health Clinical Center. The data provides 112,120 frontal view X-ray images of 30,805 patients. Although there are 14 different types of diseases included in the dataset, we are focusing only on Infiltration and effusion, since those are the most prevalent. Limiting the database affords us the opportunities to attempt to approach and obtain more comprehensive results. Example images with effusion and infiltration can be seen below.. </p>
   		<div class="center" align="center">
 	  		<img src="./img/effusion.png" align="left">
 	  		<img src="./img/infiltration.png" align="right">
 	  	</div>
 	  	<br><br><br><br><br><br><br><br><br><br><br><br><br>
+		<p> Additionally, some images were taken from a posterior-anterior view (PA), while others were taken anterior-posterior (AP). PA images formed the majority of the dataset and are generally considered to be better for the purpose of disease identification, so some implementations restricted images to PA only.
 	  	<h2>Unsupervised Learning</h2>
 	  	<h3>Motivation</h3>
 	  	<p>Since we were working with an image dataset, we hypothesized that we would need a fairly sophisticated model to correctly classify our images. However, we also felt inclined to try our some unsupervised methods to see if there was any way we could achieve results using unlabeled data, and to see how those results compared to other methods. Even though the afflictions we chose to focus on are well documented, it may not always be the case that a large labeled dataset will be available to train from, so we want to see if unsupervised learning can capture any general abnormalities in the x-ray images.</p>
 	  	<p>We chose to test out two unsupervised algorithms: K-Means and Gaussian Mixture Model (GMM). The sklearn implementation of these algorithms was used.</p>
 	  	<p>For each of the algorithms, several variations of the model were created in order to compare the effects of preprocessing and sampling variations.</p>
 	  	<h3>Data Retrieval and Formatting</h3>
-	  	<p>Of the 112,120 images in the dataset, the images marked only as "No Finding", "Infilitration", or "Effusion" were considered; images that had multiple labels were not considered. The reduced dataset used in the unsupervised learning models consisted of 73,863 images, including 50,361 images labeled as "No Finding", 9,547 images labeled as "Infiltration", and 3,955 images labeled as "Effusion". </p>
+	  	<p>Of the 112,120 images in the dataset, only images marked as "No Finding", "Infilitration", or "Effusion" were considered; images that had multiple labels were not considered. The reduced dataset used in the unsupervised learning models consisted of 73,863 images, including 50,361 images labeled as "No Finding", 9,547 images labeled as "Infiltration", and 3,955 images labeled as "Effusion". Of the reduced data set, 46658 images were taken from the PA position, and of these, 2086 were labeled as effusion, 5270 were labeled as infiltration, and 39302 were labeled as no finding. </p>
 	  	<p>For all variations, the images had to be formatted before using them in the model. Each image was scaled down by a factor of 1/8, and then a margin around the edges of the images were cropped off, since we are not concerned with the edges of images. In the end, each 1024x1024 image was reformatted into a 115x115 image.</p>
 	  	<div class="center" align="center">
 	  		<img src="./img/image_formatting.png">
@@ -99,7 +101,7 @@
 	  	<br>
 	  	<p>Unfortunately, revising the sampling method was not sufficient to create adequete clusters.</p>
 	  	<h3>Variation #5: PA Reduced Dataset</h3>
-	  	<p>For the last two variations, we reduced our dataset to only include images in PA view. Our dataset contains x-ray images in two different views: PA and AP. The two views look different, which may have affected the results of the previous variations. Thus, the dataset was reduced to 46,658 images, including 39,302 labeled as "No Finding", 5,270 labeled as "Infiltration", and 2,086 labeled as "Effusion".</p>
+	  	<p>For the last two variations, we reduced our dataset to only include images in PA view. The two views look different, which may have affected the results of the previous variations. Thus, the dataset was reduced to 46,658 images, including 39,302 labeled as "No Finding", 5,270 labeled as "Infiltration", and 2,086 labeled as "Effusion".</p>
 	  	<p>Additionally, PCA was used in this variation. Image sharpening, Gaussian filtering, and even sampling were not used.</p>
 	  	<div class="center" align="center">
 	  		<img src="./img/var5_kmeans.png">
