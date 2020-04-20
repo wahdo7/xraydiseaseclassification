@@ -150,8 +150,8 @@ Convoluted neural networks are very commonly used in image categorization, and s
 
 ### Densely Connected Convolutional Network Model
 
-		<h2>Individual Responsibilities</h2>
-		<ul>
+## Individual Responsibilities
+<ul>
 		  <li>Overview and Data: Eithan Martinez</li>
 		  <li>Unsupervised Learning: Armand Marino</li>
 	<li>Supervised Learning: Yihe Liu</li>
