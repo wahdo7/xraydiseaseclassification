@@ -1,6 +1,6 @@
 <h1>CS-4641: X-Ray Disease Classification</h1>
   		<h2>Overview</h2>
-  		<p>For our Spring 2020 ML project, our mission was to use X-Ray images of the human chest and determine one of three outcomes. That is, if the patient is healthy, has signs of Infiltration or has signs of effusion. Infiltration refers to a buildup such as pus, protein, or blood in the parenchyma of the lung, while effusion refers to accumulation of fluid within the layers of the pleura in the lung.</p>
+  		<p>For our Spring 2020 ML project, our objective was to use X-Ray images of the human chest and determine whether a patient has no abnormalities, has signs of Infiltration or has signs of effusion. Infiltration refers to a buildup such as pus, protein, or blood in the parenchyma of the lung, while effusion refers to accumulation of fluid within the layers of the pleura in the lung.</p>
 		
  <h2>Data</h2>
  <p>We used data provided by the clinical PACS database at National Institutes of Health Clinical Center. The data provides 112,120 frontal view X-ray images of 30,805 patients. Although there are 14 different types of diseases included in the dataset, we are focusing only on Infiltration and effusion, since those are the most prevalent. Limiting the database affords us the opportunities to attempt to approach and obtain more comprehensive results. Example images with effusion and infiltration can be seen below.. </p>
