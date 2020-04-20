@@ -145,6 +145,9 @@
 ### Motivation
 Convoluted neural networks are very commonly used in image categorization, and since we did not know what to expect with our unsupervised learning results, we decided to create a conventional CNN that would be able to categorize chest x-ray images as no finding, infiltration, or effusion, the same labels used in the unsupervised learning section, since this method reliably gets good results. Additionally, we wished to create a densely connected convolutional network, a CNN variant in which each layer is connnected to all other layers, for the same purpose to see if we can achieve higher classification accuracy.
 
+### Preprocessing
+Before training the networks on the images, the images were normalized by subtracting the mean of each channel in the whole dataset from each pixel in a color channel, and then dividing the result by the standard deviation. To mitigate overfitting, images were cropped and/or mirrored randomly, and resulting images were downsampled to 224x224 so that the networks could be fitted in a reasonable amount of time.
+
 ### Conventional CNN Model
 (Will finish tomorrow)
 
