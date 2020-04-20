@@ -139,8 +139,21 @@
 		  <li>K-Means and GMM may just not be powerful enough to encode the patterns we were looking for</li>
 		</ul>
 		<p>Overall, even though the results are not what we wanted, the process behind implementing these unsupervised algorithms taught us a lot about the potential difficulties of machine learning in general. When the model doesn't produce the desired results, it can often be difficult to pinpoint exactly where the problem lies: whether it be in the dataset itself, how you processed that dataset, or in your choice of model and parameters. Even if training your model only takes a couple of lines long, there is so much computation that goes on goes on behind the scenes that you should carefully consider the size and contents of your data before attempting it. If we were to attempt these unsupervised algorithms again, we would invest more time in formatting and preprocessing the data to try and maximize the encoded information in as small a format as possible.</p>
+		
+## Supervised Learning with Neural Networks
+
+### Motivation
+Convoluted neural networks are very commonly used in image categorization, and since we did not know what to expect with our unsupervised learning results, we decided to create a conventional CNN that would be able to categorize chest x-ray images as no finding, infiltration, or effusion, the same labels used in the unsupervised learning section, since this method reliably gets good results. Additionally, we wished to create a densely connected convolutional network, a CNN variant in which each layer is connnected to all other layers, for the same purpose to see if we can achieve higher classification accuracy.
+
+### Conventional CNN Model
+(Will finish tomorrow)
+
+### Densely Connected Convolutional Network Model
+
 		<h2>Individual Responsibilities</h2>
 		<ul>
 		  <li>Overview and Data: Eithan Martinez</li>
 		  <li>Unsupervised Learning: Armand Marino</li>
+	<li>Supervised Learning: Yihe Liu</li>
+	<li>NN Data and Analysis: Richard Li</li>
 		</ul>
