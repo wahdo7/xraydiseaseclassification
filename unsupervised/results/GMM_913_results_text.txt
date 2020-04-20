@@ -1,0 +1,119 @@
+Test ID: 913
+
+----- Preprocessing Stats -----
+Image scale: 0.125
+Margins: 50 50
+Sharpen: False
+Blob Extraction: False
+Number of features pre-PCA: 13225
+Number of features post-PCA: 592
+
+----- Training Stats -----
+Full data set size: 46658
+Training data set size: 1164
+Even sampling: True
+Number of clusters: 16
+
+----- Evaluation Stats -----
+Silhouette Coefficient: -0.05234055011456322
+Number of samples used in Silhouette calculation: 2280
+Davies-Bouldin Index: 19.99200997411095
+Number of samples used in Davies-Bouldin calculation: 2280
+
+----- Cluster Stats -----
+Cluster 0
+num_cluster_members: 977
+num_healthy: 820
+num_effusion: 52
+num_infiltration: 105
+
+Cluster 1
+num_cluster_members: 2221
+num_healthy: 1865
+num_effusion: 75
+num_infiltration: 281
+
+Cluster 2
+num_cluster_members: 10
+num_healthy: 4
+num_effusion: 1
+num_infiltration: 5
+
+Cluster 3
+num_cluster_members: 5343
+num_healthy: 4861
+num_effusion: 208
+num_infiltration: 274
+
+Cluster 4
+num_cluster_members: 1186
+num_healthy: 916
+num_effusion: 151
+num_infiltration: 119
+
+Cluster 5
+num_cluster_members: 2135
+num_healthy: 1746
+num_effusion: 55
+num_infiltration: 334
+
+Cluster 6
+num_cluster_members: 1630
+num_healthy: 1335
+num_effusion: 95
+num_infiltration: 200
+
+Cluster 7
+num_cluster_members: 1046
+num_healthy: 853
+num_effusion: 48
+num_infiltration: 145
+
+Cluster 8
+num_cluster_members: 1368
+num_healthy: 1114
+num_effusion: 101
+num_infiltration: 153
+
+Cluster 9
+num_cluster_members: 1672
+num_healthy: 1286
+num_effusion: 169
+num_infiltration: 217
+
+Cluster 10
+num_cluster_members: 762
+num_healthy: 619
+num_effusion: 83
+num_infiltration: 60
+
+Cluster 11
+num_cluster_members: 18848
+num_healthy: 15914
+num_effusion: 685
+num_infiltration: 2249
+
+Cluster 12
+num_cluster_members: 2130
+num_healthy: 1801
+num_effusion: 55
+num_infiltration: 274
+
+Cluster 13
+num_cluster_members: 361
+num_healthy: 274
+num_effusion: 46
+num_infiltration: 41
+
+Cluster 14
+num_cluster_members: 5919
+num_healthy: 4980
+num_effusion: 216
+num_infiltration: 723
+
+Cluster 15
+num_cluster_members: 1050
+num_healthy: 914
+num_effusion: 46
+num_infiltration: 90
+

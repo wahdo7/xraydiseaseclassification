@@ -11,6 +11,8 @@ from sklearn.decomposition import PCA
 from sklearn.mixture import GaussianMixture
 from sklearn.metrics import silhouette_score, davies_bouldin_score
 from matplotlib import pyplot as plt
+from sklearn.preprocessing import normalize
+
 
 def preprocessImage(img, scaleFactor, margin, sharpen, blob):
 	processed_img = img
@@ -47,6 +49,8 @@ def preprocessImage(img, scaleFactor, margin, sharpen, blob):
 	# plt.subplot(132)
 	# plt.imshow(processed_img, cmap = 'gray')
 	# plt.show()
+
+	processed_img = normalize(processed_img)
 	
 	return processed_img
 
@@ -61,11 +65,11 @@ scale = 0.125
 margin = (50, 50)
 num_clusters = 16
 sharpen = False
-blob = True
+blob = False
 even_sampling = False
 
 data = None
-with open('image_labels.csv', newline='') as csvfile:
+with open('image_labels_single_pa.csv', newline='') as csvfile:
 	print()
 	reader = csv.reader(csvfile)
 	image_count = sum(1 for row in reader) - 1
@@ -78,7 +82,7 @@ with open('image_labels.csv', newline='') as csvfile:
 	train_files = []
 
 	if even_sampling:
-		with open('image_labels_nofinding.csv', newline='') as nofinding_csvfile:
+		with open('image_labels_nofinding_pa.csv', newline='') as nofinding_csvfile:
 			nofinding_reader = csv.reader(nofinding_csvfile)
 			nofinding_image_count = sum(1 for row in nofinding_reader) - 1
 			nofinding_csvfile.seek(0)
@@ -86,7 +90,7 @@ with open('image_labels.csv', newline='') as csvfile:
 			for i, row in enumerate(nofinding_reader):
 				if i in nofinding_train_indices:
 					train_files.append(row[0])
-			with open('image_labels_infiltration.csv', newline='') as infiltration_csvfile:
+			with open('image_labels_infiltration_pa.csv', newline='') as infiltration_csvfile:
 				infiltration_reader = csv.reader(infiltration_csvfile)
 				infiltration_image_count = sum(1 for row in infiltration_reader) - 1
 				infiltration_csvfile.seek(0)
@@ -94,7 +98,7 @@ with open('image_labels.csv', newline='') as csvfile:
 				for i, row in enumerate(infiltration_reader):
 					if i in infiltration_train_indices:
 						train_files.append(row[0])
-				with open('image_labels_effusion.csv', newline='') as effusion_csvfile:
+				with open('image_labels_effusion_pa.csv', newline='') as effusion_csvfile:
 					effusion_reader = csv.reader(effusion_csvfile)
 					effusion_image_count = sum(1 for row in effusion_reader) - 1
 					effusion_csvfile.seek(0)

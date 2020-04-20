@@ -1,0 +1,119 @@
+Test ID: 894
+
+----- Preprocessing Stats -----
+Image scale: 0.125
+Margins: 50 50
+Sharpen: False
+Blob Extraction: False
+Number of features pre-PCA: 13225
+Number of features post-PCA: 590
+
+----- Training Stats -----
+Full data set size: 46658
+Training data set size: 1166
+Even sampling: False
+Number of clusters: 16
+
+----- Evaluation Stats -----
+Silhouette Coefficient: -0.08958933277876549
+Number of samples used in Silhouette calculation: 2224
+Davies-Bouldin Index: 19.922589621643844
+Number of samples used in Davies-Bouldin calculation: 2224
+
+----- Cluster Stats -----
+Cluster 0
+num_cluster_members: 138
+num_healthy: 112
+num_effusion: 0
+num_infiltration: 26
+
+Cluster 1
+num_cluster_members: 3655
+num_healthy: 2849
+num_effusion: 351
+num_infiltration: 455
+
+Cluster 2
+num_cluster_members: 2836
+num_healthy: 2513
+num_effusion: 116
+num_infiltration: 207
+
+Cluster 3
+num_cluster_members: 4513
+num_healthy: 3699
+num_effusion: 180
+num_infiltration: 634
+
+Cluster 4
+num_cluster_members: 2535
+num_healthy: 2119
+num_effusion: 58
+num_infiltration: 358
+
+Cluster 5
+num_cluster_members: 1689
+num_healthy: 1451
+num_effusion: 114
+num_infiltration: 124
+
+Cluster 6
+num_cluster_members: 3687
+num_healthy: 3120
+num_effusion: 86
+num_infiltration: 481
+
+Cluster 7
+num_cluster_members: 1830
+num_healthy: 1496
+num_effusion: 93
+num_infiltration: 241
+
+Cluster 8
+num_cluster_members: 2716
+num_healthy: 2256
+num_effusion: 117
+num_infiltration: 343
+
+Cluster 9
+num_cluster_members: 4468
+num_healthy: 4048
+num_effusion: 147
+num_infiltration: 273
+
+Cluster 10
+num_cluster_members: 2928
+num_healthy: 2398
+num_effusion: 132
+num_infiltration: 398
+
+Cluster 11
+num_cluster_members: 1687
+num_healthy: 1415
+num_effusion: 15
+num_infiltration: 257
+
+Cluster 12
+num_cluster_members: 3952
+num_healthy: 3631
+num_effusion: 146
+num_infiltration: 175
+
+Cluster 13
+num_cluster_members: 3410
+num_healthy: 2822
+num_effusion: 141
+num_infiltration: 447
+
+Cluster 14
+num_cluster_members: 2899
+num_healthy: 2277
+num_effusion: 251
+num_infiltration: 371
+
+Cluster 15
+num_cluster_members: 3715
+num_healthy: 3096
+num_effusion: 139
+num_infiltration: 480
+
