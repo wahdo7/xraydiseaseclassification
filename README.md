@@ -1,4 +1,4 @@
-<h1>CS-4641: X-Ray Disease Classification</h1>
+<h1>CS-4641: X-Ray Disease Classification</h1> 
   		<h2>Overview</h2>
   		<p>For our Spring 2020 ML project, our objective was to use X-Ray images of the human chest and determine whether a patient has no abnormalities, has signs of Infiltration or has signs of effusion. Infiltration refers to a buildup such as pus, protein, or blood in the parenchyma of the lung, while effusion refers to accumulation of fluid within the layers of the pleura in the lung.</p>
 		
