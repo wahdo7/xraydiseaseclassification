@@ -6,14 +6,9 @@ For our Spring 2020 ML project, our objective was to use X-Ray images of the hum
 ## Data
 We used data provided by the clinical PACS database at National Institutes of Health Clinical Center. The data provides 112,120 frontal view X-ray images of 30,805 patients. Although there are 14 different types of diseases included in the dataset, we are focusing only on Infiltration and effusion, since those are the most prevalent. Limiting the database affords us the opportunities to attempt to approach and obtain more comprehensive results. Example images with effusion and infiltration can be seen below.
 
-<div style="margin:auto;width:80%;padding:10px;align-content:center;" align="center">
-	<div style="width:50%;align-content:center;float:left;">
-		<img src="./img/effusion.png">
-	</div>
-	<div style="margin-left:50%;width:50%;align-content:center;">
-		<img src="./img/infiltration.png">
-	</div>
-</div>
+Solarized dark             |  Solarized Ocean
+:-------------------------:|:-------------------------:
+![](./img/effusion.png)  |  ![](./img/infiltration.png)
 
 ## Unsupervised Learning
 
