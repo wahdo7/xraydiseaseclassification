@@ -6,7 +6,15 @@ For our Spring 2020 ML project, our objective was to use X-Ray images of the hum
 ## Data
 We used data provided by the clinical PACS database at National Institutes of Health Clinical Center. The data provides 112,120 frontal view X-ray images of 30,805 patients. Although there are 14 different types of diseases included in the dataset, we are focusing only on Infiltration and effusion, since those are the most prevalent. Limiting the database affords us the opportunities to attempt to approach and obtain more comprehensive results. Example images with effusion and infiltration can be seen below.
 
-![](./img/effusion.png)  |  ![](./img/infiltration.png)
+<div class="center" align="center">
+	<div style="width:50%;">
+		<img src="./img/effusion.png">
+	</div>
+	<div style="width:50%;">
+		<img src="./img/infiltration.png">
+	</div>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 ## Unsupervised Learning
 
@@ -32,13 +40,13 @@ After training the model, all 73,863 images were clustered using the classifier.
 For this variation, the model was trained on feature-reduced data using Principal Component Analysis. Each 115x115 image consisted of 13,225 features, and PCA determined that 99% of the variance of the training population could be captured in ~500 features.
 In addition to PCA, the formatting, training, and evaluation techniques described previously were used in this variation.
 
-<div style="margin:auto;width:80%;padding:10px;align-content:center;" align="center">
-	<div style="width:50%;align-content:center;float:left;">
+<div class="center" align="center">
+	<div class="left">
 		<img src="./img/var1_kmeans.png">
 		<p>Silhouette Coefficient: -0.04659465092815443</p>
 		<p>Davies-Bouldin Index: 19.193659061323928</p>
 	</div>
-	<div style="margin-left:50%;width:50%;align-content:center;">
+	<div class="right">
 		<img src="./img/var1_gmm.png">
 		<p>Silhouette Coefficient: -0.0657013023269497</p>
 		<p>Davies-Bouldin Index: 17.129075319442464</p>
