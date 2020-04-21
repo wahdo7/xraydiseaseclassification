@@ -167,7 +167,7 @@ The network was run for 250 epochs, and achieved an accuracy of 0.8416 on the tr
 </div>
 
 | Category | True Positive | True Negative | False Positive | False Negative| Precison | Recall | F1 |
-| ----------- | ----------- | ----------- | ----------- |
+| ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
 | No Finding | | | | | | | |
 | Effusion | | | | | | | |
 | Infiltration | | | | | | | |
