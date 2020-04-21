@@ -168,9 +168,9 @@ The network was run for 250 epochs, and achieved an accuracy of 0.8416 on the tr
 
 | Category | True Positive | True Negative | False Positive | False Negative| Precison | Recall | F1 |
 | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
-| No Finding | | | | | | | |
-| Effusion | | | | | | | |
-| Infiltration | | | | | | | |
+| No Finding | 114 | 288 | 110 | 85 | | | |
+| Effusion | 159 | 349 | 49 | 40 | | | |
+| Infiltration | 103 | 336 | 62 | 96 | | | |
 
 ### Densely Connected Convolutional Network Model
 
