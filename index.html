@@ -166,7 +166,7 @@
 		</ul>
 		<p>Overall, even though the results are not what we wanted, the process behind implementing these unsupervised algorithms taught us a lot about the potential difficulties of machine learning in general. When the model doesn't produce the desired results, it can often be difficult to pinpoint exactly where the problem lies: whether it be in the dataset itself, how you processed that dataset, or in your choice of model and parameters. Even if training your model only takes a couple of lines long, there is so much computation that goes on goes on behind the scenes that you should carefully consider the size and contents of your data before attempting it. If we were to attempt these unsupervised algorithms again, we would invest more time in formatting and preprocessing the data to try and maximize the encoded information in as small a format as possible.</p>
 
-		<div markdown="1">
+		<span class="note">
 
 			## Supervised Learning with Neural Networks
 
@@ -244,7 +244,7 @@
 			In the supervised learning datasets, we excluded all anterior-posterior images because they were visually different, and we believed including both views would negatively impact results. Doing so restricted the size of the training data, and may have had a larger negative impact on training results than having two different image view types. Both methods suffered from overfitting, which was much more apparent on the densenet. However, results were still significantly better than chance for both neural network methods. We believe that with a larger dataset, the densenet would have been able to acheive better validation accuracy, but training such a network would have required significantly more time and resources than we could reasonably expend.
 
 			One thing in common with both approaches is that both networks had the lowest recall for the infiltration category. This may be due to the relative lack of distinct features of this condition, and conditions that were not included in the dataset may have had a higher true positive rate had they been used and labeled in the training set. Conversely, both networks had high F1 coefficients for effusion.
-		</div>
+		</span>
 		
 
 <h2>Individual Responsibilities</h2>
