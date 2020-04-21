@@ -10,6 +10,7 @@ We used data provided by the clinical PACS database at National Institutes of He
 	<img src="./img/effusion.png" align="left">
 	<img src="./img/infiltration.png" align="right">
 </div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 ## Unsupervised Learning
 
@@ -34,6 +35,7 @@ After training the model, all 73,863 images were clustered using the classifier.
 ### Variation #1: PCA
 For this variation, the model was trained on feature-reduced data using Principal Component Analysis. Each 115x115 image consisted of 13,225 features, and PCA determined that 99% of the variance of the training population could be captured in ~500 features.
 In addition to PCA, the formatting, training, and evaluation techniques described previously were used in this variation.
+
 <div class="center" align="center">
 	<div class="left">
 		<img src="./img/var1_kmeans.png">
@@ -46,13 +48,15 @@ In addition to PCA, the formatting, training, and evaluation techniques describe
 		<p>Davies-Bouldin Index: 17.129075319442464</p>
 	</div>
 </div>
+
 Visually, the clusters did not do a very good job of encoding any one label in particular: each cluster contains some number of each of the three labels. The Silhouette Coefficient and Davies-Bouldin Index for both K-Means and GMM also indicate that the clusterings are not very good. Originally, this variation of the models was intended to be the only one, but after seeing how poorly the classifiers performed, we decided to try other techniques to try and obtain better results.
 
 ### Variation #2: PCA with Image Sharpening
 Initially, it was thought that the issue could have been with the reduction in resolution that came with reformatting the images to a smaller size. To remedy this, we tried sharpening each image before performing the rescaling operation and PCA reduction.
+
 <div class="center" align="center">
 	<img src="./img/preprocess_sharpen.png">
-	<label>The native 1024x1024 image (left) and the reformatted, sharpened 115x115 image (right)</label>
+	<p>The native 1024x1024 image (left) and the reformatted, sharpened 115x115 image (right)</p>
 </div>
 
 In addition to the image sharpening and PCA, the formatting, training, and evaluation techniques described previously were used in this variation.
@@ -69,6 +73,7 @@ In addition to the image sharpening and PCA, the formatting, training, and evalu
 		<p>Davies-Bouldin Index: 7.588603363206704</p>
 	</div>
 </div>
+
 Sharpening the images did not produce the desired improvement for either algorithm.
 
 ### Variation #3: PCA with Gaussian filtering and labeling
