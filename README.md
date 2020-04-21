@@ -159,11 +159,19 @@ In our CNN implementation, we used the Sequential class in the TensorFlow Keras 
 
 To train the network, we randomly selected 2000 posterior-anterior images from each label category as the training data, and 200 images for validation testing. Since there were less than 2200 posterior-anterior images with effusion, the test set for this image category was smaller than the other two.
 
+**Results**
+
 The network was run for 250 epochs, and achieved an accuracy of 0.8416 on the training data and 0.7152 on the validation set. The difference is indicative of overfitting and validation accuracy did not significantly increase after the 150th epoch,, but results were still significantly better than chance.
 
 <div class="center" align="center">
 	  		<img src="./img/cnn_accuracy_over_epochs.PNG" align="center">
 </div>
+
+| Category | Precison | Recall | F1 |
+| ----------- | ----------- | ----------- | ----------- |
+| No Finding | Title | | |
+| Effusion | Text | | |
+| Infiltration | Text | | |
 
 ### Densely Connected Convolutional Network Model
 
