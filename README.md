@@ -171,11 +171,11 @@ The network was trained for 250 epochs, and achieved an accuracy of 0.8416 on th
 	  		<img src="./img/cnn_accuracy_over_epochs.PNG" align="center">
 </div>
 
-| Category | True Positive | True Negative | False Positive | False Negative |
-| ----------- | ----------- | ----------- | ----------- | ----------- |
-| No Finding | 167 | 298 | 100 | 32 |
-| Effusion | 160 | 369 | 29 | 39 |
-| Infiltration | 108 | 365 | 33 | 91 |
+| Category | True Positive | True Negative | False Positive | False Negative | Precision | Recall |
+| ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
+| No Finding | 167 | 298 | 100 | 32 | 0.6255 | 0.8392 |
+| Effusion | 160 | 369 | 29 | 39 | 0.8466 | 0.8040 |
+| Infiltration | 108 | 365 | 33 | 91 | 0.7660 | 0.5427 |
 
 <div class="center" align="center">
 	  		<img src="./img/cnn_predictions.PNG" align="center">
@@ -192,11 +192,11 @@ As with the conventional CNN, we used a class located in the TensorFlow Keras pa
 
 The same dataset was used to train the densenet. The densenet took twice as long to train for each epoch than the conventional network, so only 100 epochs were done before training was terminated, and validation accuracy was no longer increasing at the time of termination. The densenet achieved 0.9518 training set accuracy and 0.6717 validation set accuracy, which indicates that the densenet suffered more from overfitting than did the conventional CNN, although both neural nets produced results that were significantly better than chance.
 
-| Category | True Positive | True Negative | False Positive | False Negative|
-| ----------- | ----------- | ----------- | ----------- | ----------- |
-| No Finding | 114 | 288 | 110 | 85 |
-| Effusion | 159 | 349 | 49 | 40 |
-| Infiltration | 103 | 336 | 62 | 96 |
+| Category | True Positive | True Negative | False Positive | False Negative| Precision | Recall |
+| ----------- | ----------- | ----------- | ----------- | ----------- |----------- |----------- |
+| No Finding | 114 | 288 | 110 | 85 | 0.5098 | 0.5279 |
+| Effusion | 159 | 349 | 49 | 40 | 0.7644 | 0.7990 |
+| Infiltration | 103 | 336 | 62 | 96 | 0.6242 | 0.5176 |
 
 <div class="center" align="center">
 	  		<img src="./img/densenet_predictions.png" align="center">
