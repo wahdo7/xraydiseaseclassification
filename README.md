@@ -162,7 +162,7 @@ To check that we were building our networks correctly and if the approach was fe
 In our CNN implementation, we used the Sequential class in the TensorFlow Keras library. The created model consisted of three sets of convolutional, batch normalization, leaky regularization, and max pooling layers, and a flattening layer and three dense layers were used to convert the features into an output label value. The model had a total of 931,329 parameters, 930,443 of which were trainable.
 
 <div class="center" align="center">
-	  		<img src="./img/model_summary.png" align="center" width = "400">
+	  		<img src="./img/2020-04-21 (2).png" align="center" width = "400">
 </div>
 
 To train the network, we randomly selected 2000 posterior-anterior images from each label category as the training data, and selected 199 images from each dataset as the testing data. Since the effusion set had less than 2200 items, some images were selected more than once, and the prepocessing step made them look different.
