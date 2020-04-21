@@ -19,7 +19,7 @@
 	  	<p>For all variations, the images had to be formatted before using them in the model. Each image was scaled down by a factor of 1/8, and then a margin around the edges of the images were cropped off, since we are not concerned with the edges of images. In the end, each 1024x1024 image was reformatted into a 115x115 image.</p>
 	  	<div class="center" align="center">
 	  		<img src="./img/image_formatting.png">
-	  		<label>The native 1024x1024 image (left) and the reformatted 115x115 image (right)</label>
+	  		<p>The native 1024x1024 image (left) and the reformatted 115x115 image (right)</p>
 	  	</div>
 	  	<br>
 	  	<h3>Training and Evaluation</h3>
