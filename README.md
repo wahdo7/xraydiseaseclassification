@@ -146,7 +146,7 @@
 Convoluted neural networks are very commonly used in image categorization, and since we did not know what to expect with our unsupervised learning results, we decided to create a conventional CNN that would be able to categorize chest x-ray images as no finding, infiltration, or effusion, the same labels used in the unsupervised learning section, since this method reliably gets good results. Additionally, we wished to create a densely connected convolutional network, a CNN variant in which each layer is connnected to all other layers, for the same purpose to see if we can achieve higher classification accuracy.
 
 ### Preprocessing
-Before training the networks on the images, the images were normalized by subtracting the mean of each channel in the whole dataset from each pixel in a color channel, and then dividing the result by the standard deviation. To mitigate overfitting, images were cropped and/or mirrored randomly, and resulting images were downsampled to 224x224 so that the networks could be fitted in a reasonable amount of time.
+Before training the networks on the images, the images were normalized by subtracting the mean of each channel from each pixel in a color channel, and then dividing the result by the standard deviation of the channel. To mitigate overfitting, images were cropped and/or mirrored randomly, and resulting images were downsampled to 224x224 so that the networks could be fitted in a reasonable amount of time.
 
 <div class="center" align="center">
 	  		<img src="./img/nn_post_process.PNG" align="center">
@@ -161,7 +161,7 @@ To train the network, we randomly selected 2000 posterior-anterior images from e
 
 **Results**
 
-The network was run for 250 epochs, and achieved an accuracy of 0.8416 on the training data and 0.7152 on the validation set. The difference is indicative of overfitting and validation accuracy did not significantly increase after the 150th epoch,, but results were still significantly better than chance.
+The network was trained for 250 epochs, and achieved an accuracy of 0.8416 on the training data and 0.7152 on the validation set. The difference is indicative of overfitting and validation accuracy did not significantly increase after the 150th epoch,, but results were still significantly better than chance.
 
 <div class="center" align="center">
 	  		<img src="./img/cnn_accuracy_over_epochs.PNG" align="center">
@@ -174,6 +174,10 @@ The network was run for 250 epochs, and achieved an accuracy of 0.8416 on the tr
 | Infiltration | 103 | 336 | 62 | 96 | | | |
 
 ### Densely Connected Convolutional Network Model
+As with the conventional CNN, we used a class located in the TensorFlow Keras package for our densenet implementation. In short, a densenet is a variation of a convolutional neural network in which the outputs of a layer are concatenated to the input of all layers below it, essentially connecting it to all lower layers. Densenets have been implemented to have lower error rates on common data sets, and we wanted to see if we could get better results than a conventional CNN with one.
+
+**Results**
+The densenet took several times longer to train for each epoch than the conventional network, so only 100 epochs were done before training was terminated, and validation accuracy was no longer increasing at the time of termination.
 
 ## Individual Responsibilities
 <ul>
