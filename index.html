@@ -46,15 +46,16 @@
 	  	<p>For this variation, the model was trained on feature-reduced data using Principal Component Analysis. Each 115x115 image consisted of 13,225 features, and PCA determined that 99% of the variance of the training population could be captured in ~500 features.</p>
 	  	<p>In addition to PCA, the formatting, training, and evaluation techniques described previously were used in this variation.</p>
 	  	<div class="center" align="center">
-	  		<img src="./img/var1_kmeans.png">
-	  		<p>Silhouette Coefficient: -0.04659465092815443</p>
-	  		<p>Davies-Bouldin Index: 19.193659061323928</p>
-	  	</div>
-	  	<br>
-	  	<div class="center" align="center">
-	  		<img src="./img/var1_gmm.png">
-	  		<p>Silhouette Coefficient: -0.0657013023269497</p>
-	  		<p>Davies-Bouldin Index: 17.129075319442464</p>
+	  		<div class="left">
+	  			<img src="./img/var1_kmeans.png">
+		  		<p>Silhouette Coefficient: -0.04659465092815443</p>
+		  		<p>Davies-Bouldin Index: 19.193659061323928</p>
+	  		</div>
+	  		<div class="right">
+	  			<img src="./img/var1_gmm.png">
+		  		<p>Silhouette Coefficient: -0.0657013023269497</p>
+		  		<p>Davies-Bouldin Index: 17.129075319442464</p>
+	  		</div>
 	  	</div>
 	  	<br>
 	  	<p>Visually, the clusters did not do a very good job of encoding any one label in particular: each cluster contains some number of each of the three labels. The Silhouette Coefficient and Davies-Bouldin Index for both K-Means and GMM also indicate that the clusterings are not very good. Originally, this variation of the models was intended to be the only one, but after seeing how poorly the classifiers performed, we decided to try other techniques to try and obtain better results.</p>
@@ -67,15 +68,16 @@
 	  	<br>
 	  	<p>In addition to the image sharpening and PCA, the formatting, training, and evaluation techniques described previously were used in this variation.</p>
 	  	<div class="center" align="center">
-	  		<img src="./img/var2_kmeans.png">
-	  		<p>Silhouette Coefficient: -0.0295680506519903</p>
-	  		<p>Davies-Bouldin Index: 15.419093994434792</p>
-	  	</div>
-	  	<br>
-	  	<div class="center" align="center">
-	  		<img src="./img/var2_gmm.png">
-	  		<p>Silhouette Coefficient: -0.1372546706651214</p>
-	  		<p>Davies-Bouldin Index: 7.588603363206704</p>
+	  		<div class="left">
+	  			<img src="./img/var2_kmeans.png">
+		  		<p>Silhouette Coefficient: -0.0295680506519903</p>
+		  		<p>Davies-Bouldin Index: 15.419093994434792</p>
+	  		</div>
+	  		<div class="right">
+	  			<img src="./img/var2_gmm.png">
+		  		<p>Silhouette Coefficient: -0.1372546706651214</p>
+		  		<p>Davies-Bouldin Index: 7.588603363206704</p>
+	  		</div>
 	  	</div>
 	  	<br>
 	  	<p>Sharpening the images did not produce the desired improvement for either algorithm.</p>
@@ -88,15 +90,16 @@
 	  	<br>
 	  	<p>In addition to the Gaussian filtering and PCA, the formatting, training, and evaluation techniques described previously were used in this variation. Image sharpening was not used.</p>
 	  	<div class="center" align="center">
-	  		<img src="./img/var3_kmeans.png">
-	  		<p>Silhouette Coefficient: -0.020005451318199686</p>
-	  		<p>Davies-Bouldin Index: 26.989964416324856</p>
-	  	</div>
-	  	<br>
-	  	<div class="center" align="center">
-	  		<img src="./img/var3_gmm.png">
-	  		<p>Silhouette Coefficient: -0.09146024643428696</p>
-	  		<p>Davies-Bouldin Index: 12.810858631261144</p>
+	  		<div class="left">
+	  			<img src="./img/var3_kmeans.png">
+		  		<p>Silhouette Coefficient: -0.020005451318199686</p>
+		  		<p>Davies-Bouldin Index: 26.989964416324856</p>
+	  		</div>
+	  		<div class="right">
+	  			<img src="./img/var3_gmm.png">
+		  		<p>Silhouette Coefficient: -0.09146024643428696</p>
+		  		<p>Davies-Bouldin Index: 12.810858631261144</p>
+	  		</div>
 	  	</div>
 	  	<br>
 	  	<p>Again, using this method of preprocessing did not improve the results.</p>
@@ -104,15 +107,16 @@
 	  	<p>Next, we considered that perhaps our method of sampling may have been producing the undesirable results observed in the other variations. Only 2.5% of the total population is being used to train our classifiers, and since the dataset is made up mostly of "No Finding" images, we considered the possibility that the training data set was being dominated by those images and thus not adequetely encoding the perturbations shown in "Infiltration" and "Effusion" images. To try and rectify this, we changed our sampling method to include equal represention for all three labels in the training data.</p>
 	  	<p>In addition to the PCA, the formatting, training, and evaluation techniques described previously were used in this variation. Image sharpening and the Gaussian filtering were not used.</p>
 	  	<div class="center" align="center">
-	  		<img src="./img/var4_kmeans.png">
-	  		<p>Silhouette Coefficient: -0.04532959360468642</p>
-	  		<p>Davies-Bouldin Index: 17.516901366607243</p>
-	  	</div>
-	  	<br>
-	  	<div class="center" align="center">
-	  		<img src="./img/var4_gmm.png">
-	  		<p>Silhouette Coefficient: -0.036171845647132814</p>
-	  		<p>Davies-Bouldin Index: 26.830940296727633</p>
+	  		<div class="left">
+	  			<img src="./img/var4_kmeans.png">
+		  		<p>Silhouette Coefficient: -0.04532959360468642</p>
+		  		<p>Davies-Bouldin Index: 17.516901366607243</p>
+	  		</div>
+	  		<div class="right">
+	  			<img src="./img/var4_gmm.png">
+		  		<p>Silhouette Coefficient: -0.036171845647132814</p>
+		  		<p>Davies-Bouldin Index: 26.830940296727633</p>
+	  		</div>
 	  	</div>
 	  	<br>
 	  	<p>Unfortunately, revising the sampling method was not sufficient to create adequete clusters.</p>
@@ -120,31 +124,35 @@
 	  	<p>For the last two variations, we reduced our dataset to only include images in PA view. Our dataset contains x-ray images in two different views: PA and AP. The two views look different, which may have affected the results of the previous variations. Thus, the dataset was reduced to 46,658 images, including 39,302 labeled as "No Finding", 5,270 labeled as "Infiltration", and 2,086 labeled as "Effusion".</p>
 	  	<p>Additionally, PCA was used in this variation. Image sharpening, Gaussian filtering, and even sampling were not used.</p>
 	  	<div class="center" align="center">
-	  		<img src="./img/var5_kmeans.png">
-	  		<p>Silhouette Coefficient: -0.08958933277876549</p>
-	  		<p>Davies-Bouldin Index: 19.922589621643844</p>
+	  		<div class="left">
+	  			<img src="./img/var5_kmeans.png">
+		  		<p>Silhouette Coefficient: -0.08958933277876549</p>
+		  		<p>Davies-Bouldin Index: 19.922589621643844</p>
+	  		</div>
+	  		<div class="right">
+	  			<img src="./img/var5_gmm.png">
+		  		<p>Silhouette Coefficient: -0.14684648218703802</p>
+		  		<p>Davies-Bouldin Index: 17.8765158264399</p>
+	  		</div>
 	  	</div>
 	  	<br>
-	  	<div class="center" align="center">
-	  		<img src="./img/var5_gmm.png">
-	  		<p>Silhouette Coefficient: -0.14684648218703802</p>
-	  		<p>Davies-Bouldin Index: 17.8765158264399</p>
-	  	</div>
 	  	<p>Using the PA dataset did not improve the clustering.</p>
 	  	<h3>Variation #6: PA Reduced Dataset w/ Normalization</h3>
 	  	<p>Lastly, we tried normalizing the PA reduced dataset, in addition to PCA.</p>
 	  	<p>Image sharpening and the Gaussian filtering were not used.</p>
 	  	<div class="center" align="center">
-	  		<img src="./img/var6_kmeans.png">
-	  		<p>Silhouette Coefficient: -0.13722082581983966</p>
-	  		<p>Davies-Bouldin Index: 21.271228511790337</p>
+	  		<div class="left">
+	  			<img src="./img/var6_kmeans.png">
+		  		<p>Silhouette Coefficient: -0.13722082581983966</p>
+		  		<p>Davies-Bouldin Index: 21.271228511790337</p>
+	  		</div>
+	  		<div class="right">
+	  			<img src="./img/var6_gmm.png">
+		  		<p>Silhouette Coefficient: -0.12399242074630179</p>
+		  		<p>Davies-Bouldin Index: 16.551696618323597</p>
+	  		</div>
 	  	</div>
 	  	<br>
-	  	<div class="center" align="center">
-	  		<img src="./img/var6_gmm.png">
-	  		<p>Silhouette Coefficient: -0.12399242074630179</p>
-	  		<p>Davies-Bouldin Index: 16.551696618323597</p>
-	  	</div>
 	  	<p>Normalization did not improve the clustering.</p>
 	  	<h3>Unsupervised Learning: Conclusions</h3>
 	  	<p>In the end, we were unable to produce create clusters that sufficiently categorized our data. There are several possible reasons we thought of as to why this was the case:</p>
