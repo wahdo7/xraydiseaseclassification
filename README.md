@@ -148,8 +148,13 @@ Convoluted neural networks are very commonly used in image categorization, and s
 ### Preprocessing
 Before training the networks on the images, the images were normalized by subtracting the mean of each channel in the whole dataset from each pixel in a color channel, and then dividing the result by the standard deviation. To mitigate overfitting, images were cropped and/or mirrored randomly, and resulting images were downsampled to 224x224 so that the networks could be fitted in a reasonable amount of time.
 
+<div class="center" align="center">
+	  		<img src="./img/nn_post_process.PNG" align="center">
+</div>
+
+The four images above are all of the same image after preprocessing. All have been randomly cropped, and the top right one has been reversed along the Y axis.
+
 ### Conventional CNN Model
-(Will finish tomorrow)
 
 ### Densely Connected Convolutional Network Model
 
