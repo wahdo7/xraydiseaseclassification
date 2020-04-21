@@ -167,25 +167,26 @@ The network was trained for 250 epochs, and achieved an accuracy of 0.8416 on th
 	  		<img src="./img/cnn_accuracy_over_epochs.PNG" align="center">
 </div>
 
-| Category | True Positive | True Negative | False Positive | False Negative| Precison | Recall | F1 |
-| ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
-| No Finding | 114 | 288 | 110 | 85 | | | |
-| Effusion | 159 | 349 | 49 | 40 | | | |
-| Infiltration | 103 | 336 | 62 | 96 | | | |
+| Category | True Positive | True Negative | False Positive | False Negative |
+| ----------- | ----------- | ----------- | ----------- | ----------- |
+| No Finding | 167 | 298 | 100 | 32 |
+| Effusion | 160 | 369 | 29 | 39 |
+| Infiltration | 108 | 365 | 33 | 91 |
 
 ### Densely Connected Convolutional Network Model
 As with the conventional CNN, we used a class located in the TensorFlow Keras package for our densenet implementation. In short, a densenet is a variation of a convolutional neural network in which the outputs of a layer are concatenated to the input of all layers below it, essentially connecting it to all lower layers. Densenets have been implemented to have lower error rates on common data sets, and we wanted to see if we could get better results than a conventional CNN with one.
 
 **Results**
+
 The same dataset was used to train the densenet. The densenet took twice as long to train for each epoch than the conventional network, so only 100 epochs were done before training was terminated, and validation accuracy was no longer increasing at the time of termination. The densenet achieved 0.9518 training set accuracy and 0.6717 validation set accuracy, which indicates that the densenet suffered more from overfitting than did the conventional CNN, although both neural nets produced results that were significantly better than chance.
 
-| Category | True Positive | True Negative | False Positive | False Negative| Precison | Recall | F1 |
-| ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
-| No Finding | 114 | 288 | 110 | 85 | | | |
-| Effusion | 159 | 349 | 49 | 40 | | | |
-| Infiltration | 103 | 336 | 62 | 96 | | | |
+| Category | True Positive | True Negative | False Positive | False Negative|
+| ----------- | ----------- | ----------- | ----------- | ----------- |
+| No Finding | 114 | 288 | 110 | 85 |
+| Effusion | 159 | 349 | 49 | 40 |
+| Infiltration | 103 | 336 | 62 | 96 |
 
-### Final Thoughts
+### Supervised Learning Conclusions
 In the supervised learning datasets, we excluded all anterior-posterior images because they looked different and were believed to have less distinct features. We believe that eliminating AP images was the right choice since the two views are noticeably different and including both would have impacted results, but doing so restricted the size of the training data, and may have had a larger negative impact on training results than having two different image view types. Both methods suffered from overfitting, which was much more apparent on the densenet. However, results were still significantly better than chance for both neural network methods. We believe that with a larger dataset, the densenet would have been able to acheive better validation accuracy, but training such a network would have required significantly more time and resources than we could reasonably expend.
 
 ## Individual Responsibilities
