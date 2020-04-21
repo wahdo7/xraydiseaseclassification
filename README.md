@@ -194,7 +194,7 @@ As with the conventional CNN, we used a class located in the TensorFlow Keras pa
 
 **Results**
 
-The same dataset was used to train the densenet. The densenet took twice as long to train for each epoch than the conventional network, so only 100 epochs were done before training was terminated, and validation accuracy was no longer increasing at the time of termination. The densenet achieved 0.9518 training set accuracy and 0.6717 validation set accuracy, which indicates that the densenet suffered more from overfitting than did the conventional CNN, although both neural nets produced results that were significantly better than chance.
+The same dataset was used to train the densenet. The densenet took twice as long to train for each epoch than the conventional network, so only 100 epochs were done before training was terminated, and validation accuracy was no longer increasing at the time of termination. The densenet achieved 0.9518 training set accuracy and 0.6717 validation set accuracy, which indicates that the densenet suffered more from overfitting than did the conventional CNN, although both neural nets produced results that were significantly better than chance. Contrary to our expectations, the densenet did not have a higher validation accuracy than the conventional network on our training set.
 
 | Category | True Positive | True Negative | False Positive | False Negative| Precision | Recall |
 | ----------- | ----------- | ----------- | ----------- | ----------- |----------- |----------- |
