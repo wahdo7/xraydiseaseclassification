@@ -209,7 +209,7 @@ The same dataset was used to train the densenet. The densenet took twice as long
 ### Supervised Learning Conclusions
 In the supervised learning datasets, we excluded all anterior-posterior images because they were visually different, and we believed including both views would negatively impact results. Doing so restricted the size of the training data, and may have had a larger negative impact on training results than having two different image view types. Both methods suffered from overfitting, which was much more apparent on the densenet. However, results were still significantly better than chance for both neural network methods. We believe that with a larger dataset, the densenet would have been able to acheive better validation accuracy, but training such a network would have required significantly more time and resources than we could reasonably expend.
 
-One thing in common with both approaches is that both networks were less likely to classify a true positive for images with the infiltration label. This may be due to the relative lack of distinct features of this condition, and conditions that were not included in the dataset may have had a higher true positive rate had they been used and labeled in the training set.
+One thing in common with both approaches is that both networks had the lowest recall for the infiltration category. This may be due to the relative lack of distinct features of this condition, and conditions that were not included in the dataset may have had a higher true positive rate had they been used and labeled in the training set. Conversely, both networks had high F1 coefficients for effusion.
 
 ## Individual Responsibilities
 <ul>
