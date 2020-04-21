@@ -157,7 +157,8 @@ The four images above are all of the same image after preprocessing. All have be
 ### Conventional CNN Model
 In our CNN implementation, we used the Sequential class in the TensorFlow Keras library. A summary of the layers in the network is located in the image below.
 
-To train the network, we randomly selected 2000 posterior-anterior images from each label category as the training data, and selected 199 images from each dataset as the testing data. Since the effusion set had less than 2200 items, some images were selected more than once, and the prepocessing step make them look different.
+To train the network, we randomly selected 2000 posterior-anterior images from each label category as the training data, and selected 199 images from each dataset as the testing data. Since the effusion set had less than 2200 items, some images were selected more than once, and the prepocessing step made them look different.
+
 **Results**
 
 The network was run for 250 epochs, and achieved an accuracy of 0.8416 on the training data and 0.7152 on the validation set. The difference is indicative of overfitting and validation accuracy did not significantly increase after the 150th epoch,, but results were still significantly better than chance.
