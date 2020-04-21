@@ -143,7 +143,7 @@
 ## Supervised Learning with Neural Networks
 
 ### Motivation
-Convoluted neural networks are very commonly used in image categorization, and since we did not know what to expect with our unsupervised learning results, we decided to create a conventional CNN that would be able to categorize chest x-ray images as no finding, infiltration, or effusion, the same labels used in the unsupervised learning section, since this method reliably gets good results. Additionally, we wished to create a densely connected convolutional network, a CNN variant in which each layer is connnected to all other layers, for the same purpose to see if we can achieve higher classification accuracy.
+Convolutional neural networks are very commonly used in image categorization, and since we did not know what to expect with our unsupervised learning results, we decided to create a conventional CNN that would be able to categorize chest x-ray images as no finding, infiltration, or effusion, the same labels used in the unsupervised learning section, since this method reliably gets good results. Additionally, we wished to create a densely connected convolutional network, a CNN variant in which each layer is connnected to all other layers, for the same purpose to see if we can achieve higher classification accuracy.
 
 ### Preprocessing
 Before training the networks on the images, the images were normalized by subtracting the mean of each channel from each pixel in a color channel, and then dividing the result by the standard deviation of the channel. To mitigate overfitting, images were cropped and/or mirrored randomly, and resulting images were downsampled to 224x224 so that the networks could be fitted in a reasonable amount of time.
@@ -156,6 +156,10 @@ The four images above are all of the same image after preprocessing. All have be
 
 ### Conventional CNN Model
 In our CNN implementation, we used the Sequential class in the TensorFlow Keras library. The created model consisted of three sets of convolutional, batch normalization, leaky regularization, and max pooling layers, and a flattening layer and three dense layers were used to convert the features into an output label value. The model had a total of 931,329 parameters, 930,443 of which were trainable.
+
+<div class="center" align="center">
+	  		<img src="./img/model_summary.png" align="center" width = "400">
+</div>
 
 To train the network, we randomly selected 2000 posterior-anterior images from each label category as the training data, and selected 199 images from each dataset as the testing data. Since the effusion set had less than 2200 items, some images were selected more than once, and the prepocessing step made them look different.
 
@@ -173,6 +177,14 @@ The network was trained for 250 epochs, and achieved an accuracy of 0.8416 on th
 | Effusion | 160 | 369 | 29 | 39 |
 | Infiltration | 108 | 365 | 33 | 91 |
 
+<div class="center" align="center">
+	  		<img src="./img/cnn_predictions.PNG" align="center">
+</div>
+
+<div class="center" align="center">
+	  		<img src="./img/cnn_category_accuracy.PNG" align="center">
+</div>
+
 ### Densely Connected Convolutional Network Model
 As with the conventional CNN, we used a class located in the TensorFlow Keras package for our densenet implementation. In short, a densenet is a variation of a convolutional neural network in which the outputs of a layer are concatenated to the input of all layers below it, essentially connecting it to all lower layers. Densenets have been implemented to have lower error rates on common data sets, and we wanted to see if we could get better results than a conventional CNN with one.
 
@@ -186,8 +198,18 @@ The same dataset was used to train the densenet. The densenet took twice as long
 | Effusion | 159 | 349 | 49 | 40 |
 | Infiltration | 103 | 336 | 62 | 96 |
 
+<div class="center" align="center">
+	  		<img src="./img/densenet_predictions.png" align="center">
+</div>
+
+<div class="center" align="center">
+	  		<img src="./img/densenet_category_acc.png" align="center">
+</div>
+
 ### Supervised Learning Conclusions
 In the supervised learning datasets, we excluded all anterior-posterior images because they were visually different, and we believed including both views would negatively impact results. Doing so restricted the size of the training data, and may have had a larger negative impact on training results than having two different image view types. Both methods suffered from overfitting, which was much more apparent on the densenet. However, results were still significantly better than chance for both neural network methods. We believe that with a larger dataset, the densenet would have been able to acheive better validation accuracy, but training such a network would have required significantly more time and resources than we could reasonably expend.
+
+One thing in common with both approaches is that both networks were less likely to classify a true positive for images with the infiltration label. This may be due to the relative lack of distinct features of this condition, and conditions that were not included in the dataset may have had a higher true positive rate had they been used and labeled in the training set.
 
 ## Individual Responsibilities
 <ul>
