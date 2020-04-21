@@ -155,13 +155,13 @@ Before training the networks on the images, the images were normalized by subtra
 The four images above are all of the same image after preprocessing. All have been randomly cropped, and the top right one has been reversed along the Y axis.
 
 ### Conventional CNN Model
-In our CNN implementation, we used the Sequential class in the TensorFlow Keras library. A summary of the layers in the network is located in the image below.
+In our CNN implementation, we used the Sequential class in the TensorFlow Keras library. The created model consisted of three sets of convolutional, batch normalization, leaky regularization, and max pooling layers, and a flattening layer and three dense layers were used to convert the features into an output label value. The model had a total of 931,329 parameters, 930,443 of which were trainable.
 
 To train the network, we randomly selected 2000 posterior-anterior images from each label category as the training data, and selected 199 images from each dataset as the testing data. Since the effusion set had less than 2200 items, some images were selected more than once, and the prepocessing step made them look different.
 
 **Results**
 
-The network was trained for 250 epochs, and achieved an accuracy of 0.8416 on the training data and 0.7152 on the validation set. The difference is indicative of overfitting and validation accuracy did not significantly increase after the 150th epoch,, but results were still significantly better than chance.
+The network was trained for 250 epochs, and achieved an accuracy of 0.8416 on the training data and 0.7152 on the validation set. The difference is indicative of overfitting and validation accuracy did not significantly increase after the 150th epoch, but results were still significantly better than chance.
 
 <div class="center" align="center">
 	  		<img src="./img/cnn_accuracy_over_epochs.PNG" align="center">
@@ -177,7 +177,16 @@ The network was trained for 250 epochs, and achieved an accuracy of 0.8416 on th
 As with the conventional CNN, we used a class located in the TensorFlow Keras package for our densenet implementation. In short, a densenet is a variation of a convolutional neural network in which the outputs of a layer are concatenated to the input of all layers below it, essentially connecting it to all lower layers. Densenets have been implemented to have lower error rates on common data sets, and we wanted to see if we could get better results than a conventional CNN with one.
 
 **Results**
-The densenet took several times longer to train for each epoch than the conventional network, so only 100 epochs were done before training was terminated, and validation accuracy was no longer increasing at the time of termination.
+The same dataset was used to train the densenet. The densenet took twice as long to train for each epoch than the conventional network, so only 100 epochs were done before training was terminated, and validation accuracy was no longer increasing at the time of termination. The densenet achieved 0.9518 training set accuracy and 0.6717 validation set accuracy, which indicates that the densenet suffered more from overfitting than did the conventional CNN, although both neural nets produced results that were significantly better than chance.
+
+| Category | True Positive | True Negative | False Positive | False Negative| Precison | Recall | F1 |
+| ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
+| No Finding | 114 | 288 | 110 | 85 | | | |
+| Effusion | 159 | 349 | 49 | 40 | | | |
+| Infiltration | 103 | 336 | 62 | 96 | | | |
+
+### Final Thoughts
+In the supervised learning datasets, we excluded all anterior-posterior images because they looked different and were believed to have less distinct features. Eliminating AP images restricted the size of the training data, and may have had a larger negative impact on training results than having two different image view types, and lead to overfitting, which was much more apparent on the densenet. However, results were still significantly better than chance for both neural network methods. We believe that with a larger dataset, the densenet would have been able to acheive better validation accuracy, but training such a network would have required significantly more time and resources than we could reasonably expend.
 
 ## Individual Responsibilities
 <ul>
