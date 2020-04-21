@@ -155,6 +155,7 @@ Before training the networks on the images, the images were normalized by subtra
 The four images above are all of the same image after preprocessing. All have been randomly cropped, and the top right one has been reversed along the Y axis.
 
 **Two-Category Test**
+
 To check that we were building our networks correctly and if the approach was feasible, we created a conventional CNN and a densenet that would classify images belonging only to the infiltration and effusion categories. The conventional CNN had a training accuracy of 0.8683 and a validation accuracy of 0.7727, and the densenet had a training accuracy of 0.9802 and a validation accuracy of 0.9040. We expected that the densenet would similarly outperform the conventional CNN on the three category classifier.
 
 ### Conventional CNN Model
