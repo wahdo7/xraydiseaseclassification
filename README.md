@@ -157,8 +157,7 @@ The four images above are all of the same image after preprocessing. All have be
 ### Conventional CNN Model
 In our CNN implementation, we used the Sequential class in the TensorFlow Keras library. A summary of the layers in the network is located in the image below.
 
-To train the network, we randomly selected 2000 posterior-anterior images from each label category as the training data, and 200 images for validation testing. Since there were less than 2200 posterior-anterior images with effusion, the test set for this image category was smaller than the other two.
-
+To train the network, we randomly selected 2000 posterior-anterior images from each label category as the training data, and selected 199 images from each dataset as the testing data. Since the effusion set had less than 2200 items, some images were selected more than once, and the prepocessing step make them look different.
 **Results**
 
 The network was run for 250 epochs, and achieved an accuracy of 0.8416 on the training data and 0.7152 on the validation set. The difference is indicative of overfitting and validation accuracy did not significantly increase after the 150th epoch,, but results were still significantly better than chance.
@@ -167,11 +166,11 @@ The network was run for 250 epochs, and achieved an accuracy of 0.8416 on the tr
 	  		<img src="./img/cnn_accuracy_over_epochs.PNG" align="center">
 </div>
 
-| Category | Precison | Recall | F1 |
+| Category | True Positive | True Negative | False Positive | False Negative| Precison | Recall | F1 |
 | ----------- | ----------- | ----------- | ----------- |
-| No Finding | Title | | |
-| Effusion | Text | | |
-| Infiltration | Text | | |
+| No Finding | | | | | | | |
+| Effusion | | | | | | | |
+| Infiltration | | | | | | | |
 
 ### Densely Connected Convolutional Network Model
 
