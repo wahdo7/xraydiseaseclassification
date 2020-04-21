@@ -10,7 +10,6 @@ We used data provided by the clinical PACS database at National Institutes of He
 	<img src="./img/effusion.png">
 	<img src="./img/infiltration.png">
 </div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 ## Unsupervised Learning
 
